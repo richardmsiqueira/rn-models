@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import styles from "./styles";
 import Title from "../../components/Title";
 
-import SchoolsRepository from "../../models/user/SchoolRepository";
+import SchoolRepository from "../../models/user/SchoolRepository";
 
 export default function Profile({ route }) {
   const navigation = useNavigation();
@@ -16,8 +16,8 @@ export default function Profile({ route }) {
   };
 
   const deleteSchool = () => {
-    SchoolsRepository.remove(data.id);
-    navigation.navigate("Schools");
+    SchoolRepository.remove(data.id);
+    navigation.navigate("Users");
   };
 
   return (

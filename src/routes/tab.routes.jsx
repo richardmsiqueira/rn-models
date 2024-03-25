@@ -4,12 +4,12 @@ import { Feather } from "@expo/vector-icons";
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import Form from "../screens/Form";
-import Users from "../screens/Users";
-import { user } from "../data/Profile";
+import Schools from "../screens/Users";
+import { school } from "../data/Profile";
 
-import schoolsRepository from "../models/user/SchoolRepository";
+import schoolRepository from "../models/user/SchoolRepository";
 
-const users = schoolsRepository.getAll();
+const schools = schoolRepository.getAll();
 
 const Tab = createBottomTabNavigator();
 
@@ -38,8 +38,8 @@ const TabRoutes = () => {
 
       <Tab.Screen
         name="Users"
-        component={Users}
-        initialParams={{ users }}
+        component={Schools}
+        initialParams={{ schools }}
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
@@ -57,7 +57,7 @@ const TabRoutes = () => {
       <Tab.Screen
         name="Profile"
         component={Profile}
-        initialParams={{ data: user }}
+        initialParams={{ data: school }}
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
@@ -75,7 +75,7 @@ const TabRoutes = () => {
       <Tab.Screen
         name="Form"
         component={Form}
-        initialParams={{ user: null, edit: false }}
+        initialParams={{ school: null, edit: false }}
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather

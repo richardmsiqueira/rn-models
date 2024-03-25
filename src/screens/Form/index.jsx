@@ -54,7 +54,7 @@ export default function Form({ route }) {
       SchoolsRepository.add(newSchool);
       clearInputs();
     }
-    navigation.navigate("Schools");
+    navigation.navigate("Users");
   };
 
   const clearInputs = () => {
@@ -87,13 +87,6 @@ export default function Form({ route }) {
         style={styles.userInput}
         onChangeText={setEmail}
         value={email}
-      />
-      <TextInput
-        placeholder="Digite a idade do usuário"
-        style={styles.userInput}
-        onChangeText={setAge}
-        value={age}
-        keyboardType="numeric"
       />
 
       <TouchableOpacity style={styles.button} onPress={handleSchoolAction}>

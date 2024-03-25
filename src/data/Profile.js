@@ -1,6 +1,6 @@
-export const user = {
+export const school = {
   id: 1417,
-  name: "Academia Arcana de Aurum",
+  nome: "Academia Arcana de Aurum",
   dataDeFundação: "04/09/1974",
   quantidadeFuncionarios: 47,
   quantidadeDeTurmas: 12,

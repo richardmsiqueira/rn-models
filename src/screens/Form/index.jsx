@@ -39,7 +39,7 @@ export default function Form({ route }) {
       setEmail(school.email);
       setNomeResponsavel(school.nomeResponsavel);
       setCargo(school.cargo);
-      setIsUpdate(true);
+      setIsUpdate(false);
     } else {
       clearInputs();
     }
@@ -83,11 +83,66 @@ export default function Form({ route }) {
         value={nome}
       />
       <TextInput
-        placeholder="Digite o email do usuário"
+        placeholder="Digite a Data de Fundação da Escola"
+        style={styles.userInput}
+        onChangeText={setDataDeFundação}
+        value={dataDeFundação}
+      />
+      <TextInput
+        placeholder="Digite a quantidade de funcionarios da Escola"
+        style={styles.userInput}
+        onChangeText={setQuantidadeFuncionarios}
+        value={quantidadeFuncionarios}
+      />
+      <TextInput
+        placeholder="Digite a quantidade de turmas da Escola"
+        style={styles.userInput}
+        onChangeText={setQuantidadeDeTurmas}
+        value={quantidadeDeTurmas}
+      />
+      <TextInput
+        placeholder="Digite o bairro da Escola"
+        style={styles.userInput}
+        onChangeText={setBairro}
+        value={bairro}
+      />
+      <TextInput
+        placeholder="Digite a cidade da Escola"
+        style={styles.userInput}
+        onChangeText={setCidade}
+        value={cidade}
+      />
+      <TextInput
+        placeholder="Digite o CEP da Escola"
+        style={styles.userInput}
+        onChangeText={setCep}
+        value={cep}
+      />
+      <TextInput
+        placeholder="Digite o telefone de contato da Escola"
+        style={styles.userInput}
+        onChangeText={setTelefone}
+        value={telefone}
+      />
+      <TextInput
+        placeholder="Digite o email de contato da Escola"
         style={styles.userInput}
         onChangeText={setEmail}
         value={email}
       />
+      <TextInput
+        placeholder="Digite o nome do responsável pela Escola"
+        style={styles.userInput}
+        onChangeText={setNomeResponsavel}
+        value={nomeResponsavel}
+      />
+      <TextInput
+        placeholder="Digite o cargo do responsável pela Escola"
+        style={styles.userInput}
+        onChangeText={setCargo}
+        value={cargo}
+      />
+
 
       <TouchableOpacity style={styles.button} onPress={handleSchoolAction}>
         <Text>{isUpdate ? "Salvar Alterações" : "Criar Escola"}</Text>

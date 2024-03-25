@@ -37,9 +37,17 @@ export default function Profile({ route }) {
 
       <View style={styles.school}>
         <View style={styles.schoolDetail}>
-          <Text style={styles.text}>{data.name}</Text>
+          <Text style={styles.text}>{data.nome}</Text>
+          <Text style={styles.text}>{data.dataDeFundação}</Text>
+          <Text style={styles.text}>{data.quantidadeFuncionarios}</Text>
+          <Text style={styles.text}>{data.quantidadeDeTurmas}</Text>
+          <Text style={styles.text}>{data.bairro}</Text>
+          <Text style={styles.text}>{data.cidade}</Text>
+          <Text style={styles.text}>{data.cep}</Text>
+          <Text style={styles.text}>{data.telefone}</Text>
           <Text style={styles.text}>{data.email}</Text>
-          <Text style={styles.text}>{data.age}</Text>
+          <Text style={styles.text}>{data.nomeResponsavel}</Text>
+          <Text style={styles.text}>{data.cargo}</Text>
         </View>
 
         <View style={styles.schoolActions}>

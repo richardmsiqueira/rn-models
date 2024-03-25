@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#C9D4FF",
     borderRadius: 5,
+    width: "70%",
   },
   schoolDetail: {
     marginBottom: 10,
@@ -31,15 +32,17 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: "#4CAF50",
     marginRight: 5,
-    minWidth: 70,
     alignItems: "center",
+    width: 70,
+    justifyContent: "center",
   },
   deleteButton: {
     padding: 5,
     borderRadius: 5,
     backgroundColor: "#FF6347",
-    minWidth: 70,
+    width: 70,
     alignItems: "center",
+    justifyContent: "center",
   },
   text: {
     fontSize: 16,

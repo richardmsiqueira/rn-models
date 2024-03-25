@@ -5,58 +5,82 @@ import { useState, useEffect } from "react";
 import styles from "./styles";
 import Title from "../../components/Title";
 
-import usersRepository from "../../models/user/UserRepository";
-import User from "../../models/user/User";
+import SchoolsRepository from "../../models/user/SchoolRepository";
+import School from "../../models/user/School";
 
 export default function Form({ route }) {
-  let { user, edit } = route.params;
+  let { school, edit } = route.params;
 
-  const [name, setName] = useState("");
+  const [nome, setNome] = useState("");
+  const [dataDeFundação, setDataDeFundação] = useState("");
+  const [quantidadeFuncionarios, setQuantidadeFuncionarios] = useState("");
+  const [quantidadeDeTurmas, setQuantidadeDeTurmas] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [cep, setCep] = useState("");
+  const [telefone, setTelefone] = useState("");
   const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
+  const [nomeResponsavel, setNomeResponsavel] = useState("");
+  const [cargo, setCargo] = useState("");
   const [isUpdate, setIsUpdate] = useState(edit);
 
   const navigation = useNavigation();
 
   useEffect(() => {
     if (edit) {
-      setName(user.name);
-      setEmail(user.email);
-      setAge(String(user.age));
+      setNome(school.nome);
+      setDataDeFundação(school.dataDeFundação);
+      setQuantidadeFuncionarios(school.quantidadeFuncionarios);
+      setQuantidadeDeTurmas(school.quantidadeDeTurmas);
+      setBairro(school.bairro);
+      setCidade(school.cidade);
+      setCep(school.cep);
+      setTelefone(school.telefone);
+      setEmail(school.email);
+      setNomeResponsavel(school.nomeResponsavel);
+      setCargo(school.cargo);
       setIsUpdate(true);
     } else {
       clearInputs();
     }
-  }, [user, edit]);
+  }, [school, edit]);
 
-  const handleUserAction = () => {
+  const handleSchoolAction = () => {
     if (isUpdate) {
-      usersRepository.update(user.id, name, email, parseInt(age) || 0);
+      SchoolsRepository.update(school.id, nome, dataDeFundação, quantidadeFuncionarios, quantidadeDeTurmas, bairro, cidade, cep, telefone, email, nomeResponsavel, cargo);
       clearInputs();
     } else {
-      const newUser = new User(name, email, parseInt(age) || 0);
-      usersRepository.add(newUser);
+      const newSchool = new School(nome, dataDeFundação, quantidadeFuncionarios, quantidadeDeTurmas, bairro, cidade, cep, telefone, email, nomeResponsavel, cargo);
+      SchoolsRepository.add(newSchool);
       clearInputs();
     }
-    navigation.navigate("Users");
+    navigation.navigate("Schools");
   };
 
   const clearInputs = () => {
     setIsUpdate(false);
     edit = false;
-    setName("");
+    setNome("");
+    setDataDeFundação("");
+    setQuantidadeFuncionarios("");
+    setQuantidadeDeTurmas("");
+    setBairro("");
+    setCidade("");
+    setCep("");
+    setTelefone("");
     setEmail("");
-    setAge("");
+    setNomeResponsavel("");
+    setCargo("");
   };
 
   return (
     <View style={styles.container}>
-      <Title title={isUpdate ? "Editar Usuário" : "Novo Usuário"} />
+      <Title title={isUpdate ? "Editar Escola" : "Nova Escola"} />
       <TextInput
-        placeholder="Digite o nome do usuário"
+        placeholder="Digite o nome da Escola"
         style={styles.userInput}
-        onChangeText={setName}
-        value={name}
+        onChangeText={setNome}
+        value={nome}
       />
       <TextInput
         placeholder="Digite o email do usuário"
@@ -72,8 +96,8 @@ export default function Form({ route }) {
         keyboardType="numeric"
       />
 
-      <TouchableOpacity style={styles.button} onPress={handleUserAction}>
-        <Text>{isUpdate ? "Salvar Alterações" : "Criar Usuário"}</Text>
+      <TouchableOpacity style={styles.button} onPress={handleSchoolAction}>
+        <Text>{isUpdate ? "Salvar Alterações" : "Criar Escola"}</Text>
       </TouchableOpacity>
 
       {isUpdate && (

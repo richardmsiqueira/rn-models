@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useNavigation, useIsFocused } from "@react-navigation/native";
+import { LinearGradient } from 'expo-linear-gradient';
 
 import styles from "./styles";
 import Title from "../../components/Title";
-import usersRepository from "../../models/user/UserRepository";
+import usersRepository from "../../models/user/SchoolRepository";
 
 export default function Users() {
   const navigation = useNavigation();
@@ -20,8 +21,13 @@ export default function Users() {
 
   return (
     <View style={styles.container}>
-      <Title title="Users" />
-      <Text>Tela de listagem de todos os usuários</Text>
+      <Title title="Escolas" />
+
+      <LinearGradient
+        colors={['#eeb600', '#f8da45', '#ffff71']}
+        styles={styles.LinearGradient}>
+        <Text style={styles.Title}>Tela de listagem de todas as escolas de magias</Text>
+      </LinearGradient>
 
       {allUsers.length > 0 ? (
         <View style={styles.userList}>
@@ -43,7 +49,12 @@ export default function Users() {
           ))}
         </View>
       ) : (
-        <Text>Não há usuários cadastrados</Text>
+
+        <LinearGradient
+          colors={['#eeb600', '#f8da45', '#ffff71']}
+          styles={styles.LinearGradient}>
+          <Text style={styles.SemCadastro}>Não há escolas cadastradas</Text>
+        </LinearGradient>
       )}
     </View>
   );

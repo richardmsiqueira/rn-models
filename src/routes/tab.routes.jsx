@@ -7,16 +7,16 @@ import Form from "../screens/Form";
 import Users from "../screens/Users";
 import { user } from "../data/Profile";
 
-import usersRepository from "../models/user/UserRepository";
+import schoolsRepository from "../models/user/SchoolRepository";
 
-const users = usersRepository.getAll();
+const users = schoolsRepository.getAll();
 
 const Tab = createBottomTabNavigator();
 
 const TabRoutes = () => {
   return (
     <Tab.Navigator
-      screenOptions={{ headerShown: false }}
+      screenOptions={{ headerShown: false, tabBarStyle: { backgroundColor: "#000000"}}}
       initialRouteName="Home"
     >
       <Tab.Screen
@@ -27,11 +27,11 @@ const TabRoutes = () => {
             <Feather
               name="home"
               size={24}
-              color={focused ? "#131313" : "#D6D6D6"}
+              color={focused ? "#D6D6D6" : "#D6D6D6"}
             />
           ),
           tabBarLabel: "Inicial",
-          tabBarActiveTintColor: "#131313",
+          tabBarActiveTintColor: "#D6D6D6",
           tabBarInactiveTintColor: "#D6D6D6",
         }}
       />
@@ -43,13 +43,13 @@ const TabRoutes = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
-              name="users"
+              name="book"
               size={24}
-              color={focused ? "#131313" : "#D6D6D6"}
+              color={focused ? "#D6D6D6" : "#D6D6D6"}
             />
           ),
-          tabBarLabel: "Usuários",
-          tabBarActiveTintColor: "#131313",
+          tabBarLabel: "Escolas",
+          tabBarActiveTintColor: "#D6D6D6",
           tabBarInactiveTintColor: "#D6D6D6",
         }}
       />
@@ -61,13 +61,13 @@ const TabRoutes = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
-              name="user"
+              name="book-open"
               size={24}
-              color={focused ? "#131313" : "#D6D6D6"}
+              color={focused ? "#D6D6D6" : "#D6D6D6"}
             />
           ),
-          tabBarLabel: "Perfil",
-          tabBarActiveTintColor: "#131313",
+          tabBarLabel: "Detalhes",
+          tabBarActiveTintColor: "#D6D6D6",
           tabBarInactiveTintColor: "#D6D6D6",
         }}
       />
@@ -79,13 +79,13 @@ const TabRoutes = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
-              name="list"
+              name="user-plus"
               size={24}
-              color={focused ? "#131313" : "#D6D6D6"}
+              color={focused ? "#D6D6D6" : "#D6D6D6"}
             />
           ),
           tabBarLabel: "Cadastro",
-          tabBarActiveTintColor: "#131313",
+          tabBarActiveTintColor: "#D6D6D6",
           tabBarInactiveTintColor: "#D6D6D6",
         }}
       />

@@ -1,46 +1,52 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from 'expo-linear-gradient';
 
 import styles from "./styles";
 import Title from "../../components/Title";
 
-import usersRepository from "../../models/user/UserRepository";
+import SchoolsRepository from "../../models/user/SchoolRepository";
 
 export default function Profile({ route }) {
   const navigation = useNavigation();
   const { data } = route.params;
 
-  const editUser = () => {
-    navigation.navigate("Form", { user: data, edit: true });
+  const editSchool = () => {
+    navigation.navigate("Form", { school: data, edit: true });
   };
 
-  const deleteUser = () => {
-    usersRepository.remove(data.id);
-    navigation.navigate("Users");
+  const deleteSchool = () => {
+    SchoolsRepository.remove(data.id);
+    navigation.navigate("Schools");
   };
 
   return (
     <View style={styles.container}>
-      <Title title="Profile" />
+      <LinearGradient
+        colors={['#eeb600', '#f8da45', '#ffff71']} 
+        styles={styles.LinearGradient}>
+        <Title title="Detalhes" />
+      </LinearGradient>
+
 
       {data ? (
-        <Text>Detalhes do usuário</Text>
+        <Text style={styles.detalhes}>Detalhes das escolas</Text>
       ) : (
-        <Text>Selecione um usuário para exibir seus detalhes</Text>
+        <Text style={styles.detalhes}>Selecione uma escola para exibir seus detalhes</Text>
       )}
 
-      <View style={styles.user}>
-        <View style={styles.userDetail}>
+      <View style={styles.school}>
+        <View style={styles.schoolDetail}>
           <Text style={styles.text}>{data.name}</Text>
           <Text style={styles.text}>{data.email}</Text>
           <Text style={styles.text}>{data.age}</Text>
         </View>
 
-        <View style={styles.userActions}>
-          <TouchableOpacity style={styles.editButton} onPress={editUser}>
+        <View style={styles.schoolActions}>
+          <TouchableOpacity style={styles.editButton} onPress={editSchool}>
             <Text>Editar</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.deleteButton} onPress={deleteUser}>
+          <TouchableOpacity style={styles.deleteButton} onPress={deleteSchool}>
             <Text>Excluir</Text>
           </TouchableOpacity>
         </View>

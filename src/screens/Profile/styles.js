@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    marginTop: 50,
+    backgroundColor: "#000000",
   },
   button: {
     marginTop: 20,
@@ -12,13 +12,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#C9D4FF",
     borderRadius: 5,
   },
-  user: {
+  school: {
     marginTop: 20,
     padding: 10,
     backgroundColor: "#C9D4FF",
     borderRadius: 5,
   },
-  userDetail: {
+  schoolDetail: {
     marginBottom: 10,
   },
   userActions: {
@@ -43,6 +43,14 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
+  },
+  detalhes: {
+    fontSize: 18,
+    color: "#f0f0f0",
+  },
+  LinearGradient: {
+    borderRadius: 10,
+    marginTop: 20,
   },
 });
 

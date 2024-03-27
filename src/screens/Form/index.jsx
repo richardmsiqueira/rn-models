@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 import styles from "./styles";
 import Title from "../../components/Title";
 
-import SchoolsRepository from "../../models/user/SchoolRepository";
-import School from "../../models/user/School";
+import SchoolsRepository from "../../models/school/SchoolRepository";
+import School from "../../models/school/School";
 
 export default function Form({ route }) {
   let { school, edit } = route.params;
@@ -39,7 +39,7 @@ export default function Form({ route }) {
       setEmail(school.email);
       setNomeResponsavel(school.nomeResponsavel);
       setCargo(school.cargo);
-      setIsUpdate(false);
+      setIsUpdate(true);
     } else {
       clearInputs();
     }
@@ -47,19 +47,24 @@ export default function Form({ route }) {
 
   const handleSchoolAction = () => {
     if (isUpdate) {
-      SchoolsRepository.update(school.id, nome, dataDeFundação, quantidadeFuncionarios, quantidadeDeTurmas, bairro, cidade, cep, telefone, email, nomeResponsavel, cargo);
+      SchoolsRepository.update(school.id, nome, dataDeFundação, parseInt(quantidadeFuncionarios) || 0, parseInt(quantidadeDeTurmas) || 0, bairro, cidade, cep, telefone, email, nomeResponsavel, cargo);
       clearInputs();
     } else {
-      const newSchool = new School(nome, dataDeFundação, quantidadeFuncionarios, quantidadeDeTurmas, bairro, cidade, cep, telefone, email, nomeResponsavel, cargo);
+      const newSchool = new School(nome, dataDeFundação, parseInt(quantidadeFuncionarios) || 0, parseInt(quantidadeDeTurmas) || 0, bairro, cidade, cep, telefone, email, nomeResponsavel, cargo);
       SchoolsRepository.add(newSchool);
       clearInputs();
     }
     navigation.navigate("Users");
   };
 
-  const clearInputs = () => {
+  const cancelEdit = () => {
+    navigation.navigate("Users");
     setIsUpdate(false);
-    edit = false;
+  }
+
+  const clearInputs = () => { 
+    setIsUpdate(false);
+    edit = false; 
     setNome("");
     setDataDeFundação("");
     setQuantidadeFuncionarios("");
@@ -93,12 +98,14 @@ export default function Form({ route }) {
         style={styles.userInput}
         onChangeText={setQuantidadeFuncionarios}
         value={quantidadeFuncionarios}
+        keyboardType="numeric"
       />
       <TextInput
         placeholder="Digite a quantidade de turmas da Escola"
         style={styles.userInput}
         onChangeText={setQuantidadeDeTurmas}
         value={quantidadeDeTurmas}
+        keyboardType="numeric"
       />
       <TextInput
         placeholder="Digite o bairro da Escola"
@@ -149,7 +156,7 @@ export default function Form({ route }) {
       </TouchableOpacity>
 
       {isUpdate && (
-        <TouchableOpacity style={styles.button} onPress={clearInputs}>
+        <TouchableOpacity style={styles.button} onPress={cancelEdit}>
           <Text>Cancelar Edição</Text>
         </TouchableOpacity>
       )}

@@ -5,9 +5,10 @@ import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import Form from "../screens/Form";
 import Schools from "../screens/Users";
+import Desenvolvedor from "../screens/Desenvolvedor";
 import { school } from "../data/Profile";
 
-import schoolRepository from "../models/user/SchoolRepository";
+import schoolRepository from "../models/school/SchoolRepository";
 
 const schools = schoolRepository.getAll();
 
@@ -85,6 +86,22 @@ const TabRoutes = () => {
             />
           ),
           tabBarLabel: "Cadastro",
+          tabBarActiveTintColor: "#D6D6D6",
+          tabBarInactiveTintColor: "#D6D6D6",
+        }}
+      />
+      <Tab.Screen
+        name="Desenvolvedor"
+        component={Desenvolvedor}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Feather
+              name="user"
+              size={24}
+              color={focused ? "#D6D6D6" : "#D6D6D6"}
+            />
+          ),
+          tabBarLabel: "Desenvolvedor",
           tabBarActiveTintColor: "#D6D6D6",
           tabBarInactiveTintColor: "#D6D6D6",
         }}

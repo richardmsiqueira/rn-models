@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import styles from "./styles";
 import Title from "../../components/Title";
 
-import SchoolRepository from "../../models/user/SchoolRepository";
+import SchoolRepository from "../../models/school/SchoolRepository";
 
 export default function Profile({ route }) {
   const navigation = useNavigation();
